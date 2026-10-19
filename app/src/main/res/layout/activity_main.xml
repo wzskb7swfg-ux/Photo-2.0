@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FotoMail"
+            android:textColor="@color/ink"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Neue Fotos werden gesammelt und nach einer kurzen Pause automatisch per E-Mail geschickt. Standort und Gerätedaten werden vorher entfernt."
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <!-- Wundfoto mit Messung -->
+        <Button
+            android:id="@+id/woundPhoto"
+            style="@style/Btn.Primary"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:minHeight="56dp"
+            android:text="Wundfoto mit Messung aufnehmen"
+            android:textSize="17sp" />
+
+        <!-- Status + Schalter -->
+        <LinearLayout style="@style/Card">
+
+            <Switch
+                android:id="@+id/enable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="Automatischer Versand"
+                android:textColor="@color/ink"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Zugriff auf Fotos fehlt. Beim Einschalten bitte „Alle zulassen“ wählen."
+                android:textColor="@color/warn"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sendNow"
+                    style="@style/Btn.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Jetzt senden" />
+
+                <Button
+                    android:id="@+id/test"
+                    style="@style/Btn.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Test-Mail" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/battery"
+                style="@style/Btn.Secondary"
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="Akku-Optimierung ausschalten (empfohlen)" />
+        </LinearLayout>
+
+        <!-- E-Mail -->
+        <TextView style="@style/Section" android:text="E-Mail" />
+
+        <LinearLayout style="@style/Card">
+
+            <TextView style="@style/Label" android:text="Fotos senden an" />
+            <EditText
+                android:id="@+id/recipient"
+                style="@style/Field"
+                android:hint="deine@adresse.de"
+                android:inputType="textEmailAddress" />
+
+            <TextView style="@style/Label" android:text="Absender: dein Gmail-Konto" />
+            <EditText
+                android:id="@+id/user"
+                style="@style/Field"
+                android:hint="name@gmail.com"
+                android:inputType="textEmailAddress" />
+
+            <TextView style="@style/Label" android:text="App-Passwort (16 Zeichen von Google)" />
+            <EditText
+                android:id="@+id/password"
+                style="@style/Field"
+                android:hint="xxxx xxxx xxxx xxxx"
+                android:inputType="textPassword" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/Label" android:text="Mailserver" />
+                    <EditText
+                        android:id="@+id/host"
+                        style="@style/Field"
+                        android:inputType="textUri" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/Label" android:text="Port" />
+                    <EditText
+                        android:id="@+id/port"
+                        style="@style/Field"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Verhalten -->
+        <TextView style="@style/Section" android:text="Verhalten" />
+
+        <LinearLayout style="@style/Card">
+
+            <TextView style="@style/Label" android:text="Wartezeit nach dem letzten Foto (Minuten)" />
+            <EditText
+                android:id="@+id/wait"
+                style="@style/Field"
+                android:inputType="number" />
+
+            <Switch
+                android:id="@+id/highRes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="Hohe Auflösung (größere Mails)"
+                android:textColor="@color/ink"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            style="@style/Btn.Primary"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:text="Einstellungen speichern" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Gesendet werden nur Fotos aus der Kamera, keine Screenshots oder Downloads. Bitte nur Bilder ohne erkennbare Personen aufnehmen."
+            android:textColor="@color/muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>

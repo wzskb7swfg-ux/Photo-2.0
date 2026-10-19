@@ -1,0 +1,42 @@
+name: FotoMail-App bauen
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code holen
+        uses: actions/checkout@v4
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+
+      - name: App bauen
+        run: gradle assembleRelease --no-daemon --stacktrace
+
+      - name: Datei umbenennen
+        run: cp app/build/outputs/apk/release/app-release.apk FotoMail.apk
+
+      - name: Download bereitstellen
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: FotoMail 1.0.${{ github.run_number }}
+          body: Neueste Version von FotoMail. Datei FotoMail.apk auf dem Handy herunterladen und öffnen.
+          files: FotoMail.apk
+          make_latest: true

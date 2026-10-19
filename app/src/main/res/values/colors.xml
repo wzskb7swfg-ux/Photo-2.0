@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ink">#3A4146</color>
+    <color name="muted">#5A6066</color>
+    <color name="primary">#4A5258</color>
+    <color name="accent">#73906B</color>
+    <color name="accent_light">#9CAF88</color>
+    <color name="card">#FFFFFF</color>
+    <color name="surface">#EDEFF0</color>
+    <color name="soft">#EAEFE1</color>
+    <color name="warn">#A0522D</color>
+    <color name="white">#FFFFFF</color>
+</resources>
